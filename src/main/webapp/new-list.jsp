@@ -23,35 +23,24 @@
 		</div>
 
 		<h2>Available Items:</h2>
-		<div>
-			<table>
-				<c:forEach items="${requestScope.allItems}" var="currentbook">
-					<tr>
-						<td>c<input type="checkbox" name="id"
-							value="${currentbook.id}"></td>
-						<td>a${currentbook.book}</td>
-						<td>c${currentbook.author}</td>
-						<td>a${currentbook.genre}</td>
-						<td>cRating: <input type="text" name="rating"
-							placeholder="1-5"></td>
-						<td>aFinished Reading Date: <input type="text" name="month"
-							placeholder="mm">size="4"> <input type="text" name="day"
-							placeholder="dd" size="4">, <input type="text"
-							name="year" placeholder="yyyy" size="4"></td>
-						<td>c</td>
-					</tr>
-					<!-- 	<div>
-						Trip date: <input type="text" name="month" placeholder="mm"
-							size="4"> <input type="text" name="day" placeholder="dd"
-							size="4">, <input type="text" name="year"
-							placeholder="yyyy" size="4">
-					</div> -->
+
+			<select name="allItemsToAdd" multiple size="6">
+				<c:forEach items="${requestScope.allItems}" var="currentitem">
+					<option value="${currentitem.id}">${currentitem.book}|
+						${currentitem.author} | ${currentitem.genre}</option>
 				</c:forEach>
-			</table>
-		</div>
+			</select>
+
 		<input type="submit" value="Create List and Add Items">
 	</form>
 	<a href="index.html">Go add new items instead.</a>
 
 </body>
 </html>
+
+<!-- 	<div>
+						Trip date: <input type="text" name="month" placeholder="mm"
+							size="4"> <input type="text" name="day" placeholder="dd"
+							size="4">, <input type="text" name="year"
+							placeholder="yyyy" size="4">
+					</div> -->

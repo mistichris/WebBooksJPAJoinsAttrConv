@@ -65,8 +65,8 @@ public class NavigationAllListsServlet extends HttpServlet {
 			} catch (NumberFormatException e) {
 				getServletContext().getRequestDispatcher("/ViewAllListsServlet").forward(request, response);
 			}
-		} else if (act.equals("Add Book to List")) {
-			getServletContext().getRequestDispatcher("/new-list.html").forward(request, response);
+		} else if (act.equals("Add a New List")) {
+			getServletContext().getRequestDispatcher("/new-list.jsp").forward(request, response);
 		}
 	}
 }

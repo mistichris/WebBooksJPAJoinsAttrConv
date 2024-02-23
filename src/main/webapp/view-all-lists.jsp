@@ -24,14 +24,15 @@
 				<c:forEach items="${currentlist.listOfItems}" var="listVal">
 					<tr>
 						<td></td>
-						<td colspan="3">${listVal.book}, ${listVal.author}, ${listVal.genre}</td>
+						<td colspan="3">${listVal.book},${listVal.author},
+							${listVal.genre}</td>
 					</tr>
 				</c:forEach>
 			</c:forEach>
 		</table>
-		<input type="submit" value="Edit List" name="doThisToList"> 
-		<input type="submit" value="Delete List" name="doThisToList"> 
-		<input type="submit" value="Add Book to List" name="doThisToList">
+		<input type="submit" value="Edit List" name="doThisToList"> <input
+			type="submit" value="Delete List" name="doThisToList"> <input
+			type="submit" value="Add a New List" name="doThisToList">
 	</form>
 	<br />
 
@@ -41,21 +42,12 @@
 		<input type="submit" name="Add Item">
 	</form>
 
-<button onclick="window.location.href='new-list.jsp'">Create New List</button>
-	<form action="new-list.jsp" method="get">
-		<button type="submit">Create a New List</button>
-	</form>
-	<form action="NavigationAllListsServlet" method="get">
-		<button type="submit">Edit a List</button>
-	</form>
 
-	<form action="NavigationAllListsServlet" method="get">
-		<button type="submit">Delete a List</button>
-	</form>
+<!-- Additional Navigation Buttons -->
 	<form action="ViewAllBooksServlet" method="get">
 		<button type="submit">View Books List</button>
 	</form>
-	<button onclick="ViewAllBooksServlet">View Books Non Form Button</button>
 	<button onclick="window.location.href='index.html'">Main Menu</button>
+	
 </body>
 </html>
