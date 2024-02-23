@@ -3,13 +3,13 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
-import controller.ListBookHelper;
+import controller.BookListItemsHelper;
 import model.BookListItems;
 
 public class StartProgram {
 
 	static Scanner in = new Scanner(System.in); // initiates the scanner function for user input
-	static ListBookHelper lbh = new ListBookHelper(); // create a new instance of the class ListBookHelper with the
+	static BookListItemsHelper lbh = new BookListItemsHelper(); // create a new instance of the class ListBookHelper with the
 														// variable 'lbh'
 
 	public static void main(String[] args) { // main method constructor -- runs the main menu below
@@ -55,7 +55,9 @@ public class StartProgram {
 		String author = in.nextLine();
 		System.out.print("Enter an book: ");
 		String book = in.nextLine();
-		BookListItems toAdd = new BookListItems(author, book); // creates a new instance of ListBook class object
+		System.out.print("Enter book genre: ");
+		String genre = in.nextLine();
+		BookListItems toAdd = new BookListItems(author, book, genre); // creates a new instance of ListBook class object
 		lbh.insertBook(toAdd); // funnels new ListBook toAdd object into ListBookHelper insertBook method
 
 	}
@@ -65,8 +67,10 @@ public class StartProgram {
 		String author = in.nextLine();
 		System.out.print("Enter the book to delete: ");
 		String book = in.nextLine();
+		System.out.print("Enter the genre to delete: ");
+		String genre = in.nextLine();
 
-		BookListItems toDelete = new BookListItems(author, book); // creates a new instance of ListBook class object
+		BookListItems toDelete = new BookListItems(author, book, genre); // creates a new instance of ListBook class object
 		lbh.deleteBook(toDelete); // funnels new ListBook toDelete object into ListBookHelper deleteBook method
 
 	}

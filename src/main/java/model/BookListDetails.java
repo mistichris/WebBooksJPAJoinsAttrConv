@@ -21,7 +21,6 @@ public class BookListDetails {
 	@GeneratedValue
 	private int id;
 	private String listName;
-	private LocalDate tripDate;
 	@ManyToOne(cascade=CascadeType.PERSIST)
 	private BookListOwner bookListOwner;
 	@OneToMany(cascade=CascadeType.MERGE, fetch=FetchType.EAGER) 
@@ -31,29 +30,24 @@ public class BookListDetails {
 		super();
 	}
 
-	public BookListDetails(int id, String listName, LocalDate tripDate, BookListOwner bookListOwner, List<BookListItems> listOfItems) {
+	public BookListDetails(int id, String listName, BookListOwner bookListOwner, List<BookListItems> listOfItems) {
 		super();
 		this.id = id;
 		this.listName = listName;
-		this.tripDate = tripDate;
 		this.bookListOwner = bookListOwner;
 		this.listOfItems = listOfItems;
 	}
 
-	public BookListDetails(String listName, LocalDate tripDate, BookListOwner bookListOwner, List<BookListItems> listOfItems) {
+	public BookListDetails(String listName, BookListOwner bookListOwner, List<BookListItems> listOfItems) {
 		this.listName = listName;
-		this.tripDate = tripDate;
 		this.bookListOwner = bookListOwner;
 		this.listOfItems = listOfItems;
 	}
 
-	public BookListDetails(String listName, LocalDate tripDate, BookListOwner bookListOwner) {
+	public BookListDetails(String listName, BookListOwner bookListOwner) {
 		this.listName = listName;
-		this.tripDate = tripDate;
 		this.bookListOwner = bookListOwner;
 	}
-	
-
 
 	public int getId() {
 		return id;
@@ -69,14 +63,6 @@ public class BookListDetails {
 
 	public void setListName(String listName) {
 		this.listName = listName;
-	}
-
-	public LocalDate getTripDate() {
-		return tripDate;
-	}
-
-	public void setTripDate(LocalDate tripDate) {
-		this.tripDate = tripDate;
 	}
 
 	public BookListOwner getShopper() {
@@ -97,7 +83,7 @@ public class BookListDetails {
 
 	@Override
 	public String toString() {
-		return "ListDetails [id=" + id + ", listName=" + listName + ", tripDate=" + tripDate + ", shopper=" + bookListOwner
+		return "ListDetails [id=" + id + ", listName=" + listName + ", shopper=" + bookListOwner
 				+ ", listOfItems=" + listOfItems + "]";
 	}
 

@@ -16,13 +16,13 @@
 					<td><input type="radio" name="id" value="${currentbook.id}"></td>
 					<td>${currentbook.book}</td>
 					<td>${currentbook.author}</td>
+					<td>${currentbook.genre}</td>
 				</tr>
 			</c:forEach>
 		</table>
-		<br /> 
-		<input type="submit" value="Edit" name="doThisToBook">
+		<br /> <input type="submit" value="Edit" name="doThisToBook">
 		<input type="submit" value="Delete" name="doThisToBook">
-		
+
 	</form>
 	<br />
 	<form action="AddBookServlet" method="post">

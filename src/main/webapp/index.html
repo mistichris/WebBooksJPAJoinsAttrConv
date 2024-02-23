@@ -6,20 +6,24 @@
 </head>
 <body>
 	<h1>Books Read Database</h1>
-
 	<form action="AddBookServlet" method="post">
-		<h2>Add a Book to the List</h2>
+	<h2>Add a Book to Books List</h2>
 		<p>
 			Book Title: <input type="text" name="book">
 		</p>
 		<p>
 			Author: <input type="text" name="author">
 		</p>
+				<p>
+			Genre: <input type="text" name="genre">
+		</p>
 		<input type="submit" name="Add Item">
 	</form>
-	<br />
 	<form action="ViewAllBooksServlet" method="get">
-		<button type="submit">View Book List</button>
+		<button type="submit">View Books List</button>
+	</form>
+		<form action="ViewAllListsServlet" method="get">
+		<button type="submit">View Books Read Lists</button>
 	</form>
 </body>
 </html>

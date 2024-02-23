@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import controller.ListBookHelper;
+import controller.BookListItemsHelper;
 import model.BookListItems;
 
 @WebServlet("/AddBookServlet")
@@ -21,10 +21,10 @@ public class AddBookServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String book = request.getParameter("book");
 		String author = request.getParameter("author");
-		
-		BookListItems li = new BookListItems(author, book);
-		ListBookHelper displayAll = new ListBookHelper();
-		displayAll.insertBook(li);
+		String genre = request.getParameter("genre");		
+		BookListItems li = new BookListItems(author, book, genre);
+		BookListItemsHelper doa = new BookListItemsHelper();
+		doa.insertBook(li);
 		
 		getServletContext().getRequestDispatcher("/index.html").forward(request, response);
 	}

@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import controller.ListBookHelper;
+import controller.BookListItemsHelper;
 import model.BookListItems;
 
 @WebServlet("/EditBookServlet")
@@ -23,7 +23,7 @@ public class EditBookServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ListBookHelper displayAll = new ListBookHelper();
+		BookListItemsHelper displayAll = new BookListItemsHelper();
 		
 		String author = request.getParameter("author");
 		String book = request.getParameter("book");

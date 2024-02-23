@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import controller.ListBookHelper;
+import controller.BookListItemsHelper;
 import model.BookListItems;
 
 @WebServlet("/NavigationServlet")
@@ -23,7 +23,7 @@ public class NavigationServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ListBookHelper displayAll = new ListBookHelper();
+		BookListItemsHelper displayAll = new BookListItemsHelper();
 		String act = request.getParameter("doThisToBook");
 		//after all changes, we should redirect to the viewAllBooks servlet
 		//The only time we don't is if they select to add a new book or edit

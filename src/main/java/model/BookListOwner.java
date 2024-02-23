@@ -15,21 +15,24 @@ public class BookListOwner {
 	@Id
 	@GeneratedValue
 	private int id;
-	private String listOwner;
+	private String ownerFName;
+	private String ownerLName;
 
 	public BookListOwner() {
 		super();
 	}
 
-	public BookListOwner(int id, String listOwner) {
+	public BookListOwner(int id, String ownerFName, String ownerLName) {
 		super();
 		this.id = id;
-		this.listOwner = listOwner;
+		this.ownerFName = ownerFName;
+		this.ownerLName = ownerLName;
 	}
 
-	public BookListOwner(String listOwner) { // extra Shopper class that will let DB auto-generate next id#
+	public BookListOwner(String ownerFName, String ownerLName) { // extra Shopper class that will let DB auto-generate next id#
 		super();
-		this.listOwner = listOwner;
+		this.ownerFName = ownerFName;
+		this.ownerLName = ownerLName;
 	}
 
 	public int getId() {
@@ -41,16 +44,24 @@ public class BookListOwner {
 	}
 
 	public String getShopperName() {
-		return listOwner;
+		return ownerFName;
 	}
 
-	public void setShopperName(String listOwner) {
-		this.listOwner = listOwner;
+	public void setShopperName(String ownerFName) {
+		this.ownerFName = ownerFName;
+	}
+	
+	public String getOwnerLName() {
+		return ownerLName;
+	}
+
+	public void setOwnerLName(String ownerLName) {
+		this.ownerLName = ownerLName;
 	}
 
 	@Override
 	public String toString() {
-		return "BookListOwner [id=" + id + ", listOwner=" + listOwner + "]";
+		return "BookListOwner [id=" + id + ", ownerFName=" + ownerFName + ", ownerLName=" + ownerLName + "]";
 	}
 
 }
