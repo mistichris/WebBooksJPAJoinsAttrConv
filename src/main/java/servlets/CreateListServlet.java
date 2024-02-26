@@ -55,8 +55,10 @@ public class CreateListServlet extends HttpServlet {
 
 		System.out.println("Success!");
 		System.out.println(bld.toString());
+		request.setAttribute("listToEdit", bld);
 
-		getServletContext().getRequestDispatcher("/ViewAllListsServlet").forward(request, response);
+		getServletContext().getRequestDispatcher("/add-ratings.jsp").forward(request, response);
+//		getServletContext().getRequestDispatcher("/ViewAllListsServlet").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

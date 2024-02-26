@@ -18,9 +18,6 @@ import model.BookListDetails;
 public class NavigationAllListsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
 	public NavigationAllListsServlet() {
 		super();
 	}
@@ -33,7 +30,9 @@ public class NavigationAllListsServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		BookListDetailsHelper dao = new BookListDetailsHelper();
+		BookListItemsHelper daoForItems = new BookListItemsHelper();
+		BookListDetailsHelper daoDetailsHelper = new BookListDetailsHelper();
+		request.setAttribute("allItems", daoForItems.showAllBooks());
 		String act = request.getParameter("doThisToList");
 
 		if (act == null) { // no button has been selected
@@ -41,8 +40,8 @@ public class NavigationAllListsServlet extends HttpServlet {
 		} else if (act.equals("Delete List")) {
 			try {
 				Integer tempId = Integer.parseInt(request.getParameter("id"));
-				BookListDetails listToDelete = dao.searchForBookListDetailsById(tempId);
-				dao.deleteList(listToDelete);
+				BookListDetails listToDelete = daoDetailsHelper.searchForBookListDetailsById(tempId);
+				daoDetailsHelper.deleteList(listToDelete);
 			} catch (NumberFormatException e) {
 				System.out.println("Forgot to click a button");
 			} finally {
@@ -51,13 +50,13 @@ public class NavigationAllListsServlet extends HttpServlet {
 		} else if (act.equals("Edit List")) {
 			try {
 				Integer tempId = Integer.parseInt(request.getParameter("id"));
-				BookListDetails listToEdit = dao.searchForBookListDetailsById(tempId);
+				BookListDetails listToEdit = daoDetailsHelper.searchForBookListDetailsById(tempId);
 				request.setAttribute("listToEdit", listToEdit);
 //				request.setAttribute("month", listToEdit.getTripDate().getMonthValue());
 //				request.setAttribute("date", listToEdit.getTripDate().getDayOfMonth());
 //				request.setAttribute("year", listToEdit.getTripDate().getYear());
-				BookListItemsHelper daoForItems = new BookListItemsHelper();
-				request.setAttribute("allBooks", daoForItems.showAllBooks());
+//				BookListItemsHelper daoForItems = new BookListItemsHelper();
+//				request.setAttribute("allBooks", daoForItems.showAllBooks());
 				if (daoForItems.showAllBooks().isEmpty()) {
 					request.setAttribute("allBooks", " ");
 				}

@@ -23,17 +23,16 @@
 		</div>
 
 		<h2>Available Items:</h2>
-
-			<select name="allItemsToAdd" multiple size="6">
-				<c:forEach items="${requestScope.allItems}" var="currentitem">
-					<option value="${currentitem.id}">${currentitem.book}|
-						${currentitem.author} | ${currentitem.genre}</option>
-				</c:forEach>
-			</select>
-
-		<input type="submit" value="Create List and Add Items">
+		<select name="allItemsToAdd" multiple size="6">
+			<c:forEach items="${requestScope.allItems}" var="currentitem">
+				<option value="${currentitem.id}">${currentitem.book}|
+					${currentitem.author}|${currentitem.genre}</option>
+			</c:forEach>
+		</select> <input type="submit" value="Create List and Add Items">
 	</form>
-	<a href="index.html">Go add new items instead.</a>
+	<button onclick="window.location.href='add-book.jsp'">Add
+		Books Instead</button>
+	<!-- 	<a href="add-book.jsp">Go add new items instead.</a> -->
 
 </body>
 </html>

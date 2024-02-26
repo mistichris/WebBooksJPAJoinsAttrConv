@@ -12,16 +12,16 @@
 	<h1>Books Read Database List</h1>
 	<form method="post" action="NavigationAllListsServlet">
 		<table>
-			<c:forEach items="${requestScope.allLists}" var="currentlist">
+			<c:forEach items="${requestScope.allLists}" var="currentList">
 				<tr>
-					<td><input type="radio" name="id" value="${currentlist.id}"></td>
-					<td><h2>${currentlist.listName}</h2></td>
+					<td><input type="radio" name="id" value="${currentList.id}"></td>
+					<td><h2>${currentList.listName}</h2></td>
 				</tr>
 				<tr>
-					<td colspan="3">Trip Date: ${currentlist.ownerFName}
-						${currentlist.ownerLName}</td>
+					<td colspan="4">Created By: ${currentList.bookListOwner} On
+						${currentList.createdDate}</td>
 				</tr>
-				<c:forEach items="${currentlist.listOfItems}" var="listVal">
+				<c:forEach items="${currentList.listOfItems}" var="listVal">
 					<tr>
 						<td></td>
 						<td colspan="3">${listVal.book},${listVal.author},
@@ -43,11 +43,11 @@
 	</form>
 
 
-<!-- Additional Navigation Buttons -->
+	<!-- Additional Navigation Buttons -->
 	<form action="ViewAllBooksServlet" method="get">
 		<button type="submit">View Books List</button>
 	</form>
 	<button onclick="window.location.href='index.html'">Main Menu</button>
-	
+
 </body>
 </html>

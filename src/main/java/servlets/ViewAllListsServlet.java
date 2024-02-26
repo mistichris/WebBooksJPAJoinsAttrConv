@@ -24,12 +24,14 @@ public class ViewAllListsServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		BookListDetailsHelper slh = new BookListDetailsHelper();
-		List<BookListDetails> abc = slh.getLists();
-		request.setAttribute("allDetails", abc);
-		if (abc.isEmpty()) {
-			request.setAttribute("allDetails", " ");
-		}
+		BookListDetailsHelper bldh = new BookListDetailsHelper();
+		List<BookListDetails> abc = bldh.getLists();
+		request.setAttribute("allLists", abc);
+		
+		//*****if empty code DOESN'T WORK for an empty database since its looking for a string and the items in the database are not strings
+//		if (abc.isEmpty()) {
+//			request.setAttribute("allLists", );
+//		}
 		getServletContext().getRequestDispatcher("/view-all-lists.jsp").forward(request, response);
 	}
 

@@ -24,7 +24,7 @@ public class BookListOwnerHelper {
 		em.getTransaction().commit();
 		em.close();													//closes Entity Manager
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public List<BookListOwner> showAllOwners(){
 		EntityManager em = emfactory.createEntityManager();											//creates a new instance of the Entity Manager

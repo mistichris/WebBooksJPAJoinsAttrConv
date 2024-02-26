@@ -25,9 +25,9 @@ public class BookListDetailsHelper {
 		em.close();													//closes Entity Manager
 	}
 	
-	@SuppressWarnings("unchecked")
 	public List<BookListDetails> getLists() {
 		EntityManager em = emfactory.createEntityManager();
+		@SuppressWarnings("unchecked")
 		List<BookListDetails> allDetails = em.createQuery("SELECT d FROM BookListDetails d").getResultList();
 		return allDetails;
 	}
@@ -117,7 +117,7 @@ public class BookListDetailsHelper {
 //		return foundDetails;
 //		}
 //	
-	//Search for Book by ID script
+	//Search for List Details by ID script
 	public BookListDetails searchForBookListDetailsById(int idToEdit) {
 		EntityManager em = emfactory.createEntityManager();				//new instance of Entity Manager Factory
 		em.getTransaction().begin();

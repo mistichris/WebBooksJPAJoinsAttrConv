@@ -1,6 +1,5 @@
 package model;
 
-
 import java.time.LocalDate;
 import java.util.List;
 
@@ -21,32 +20,28 @@ public class BookListDetails {
 	@GeneratedValue
 	private int id;
 	private String listName;
-	@ManyToOne(cascade=CascadeType.PERSIST)
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	private BookListOwner bookListOwner;
-	@OneToMany(cascade=CascadeType.MERGE, fetch=FetchType.EAGER) 
-	private List<BookListItems> listOfItems;	
+	@OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+	private List<BookListItems> listOfItems;
+	private LocalDate createdDate;
 
 	public BookListDetails() {
 		super();
 	}
 
-	public BookListDetails(int id, String listName, BookListOwner bookListOwner, List<BookListItems> listOfItems) {
-		super();
-		this.id = id;
-		this.listName = listName;
-		this.bookListOwner = bookListOwner;
-		this.listOfItems = listOfItems;
-	}
-
 	public BookListDetails(String listName, BookListOwner bookListOwner, List<BookListItems> listOfItems) {
+		super();
 		this.listName = listName;
 		this.bookListOwner = bookListOwner;
 		this.listOfItems = listOfItems;
+		setCreatedDate(LocalDate.now());
 	}
 
 	public BookListDetails(String listName, BookListOwner bookListOwner) {
 		this.listName = listName;
 		this.bookListOwner = bookListOwner;
+		setCreatedDate(LocalDate.now());
 	}
 
 	public int getId() {
@@ -76,15 +71,23 @@ public class BookListDetails {
 	public void setListOfItems(List<BookListItems> listOfItems) {
 		this.listOfItems = listOfItems;
 	}
-	
+
 	public List<BookListItems> getListOfItems() {
 		return listOfItems;
 	}
 
+	public LocalDate getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(LocalDate createdDate) {
+		createdDate =  LocalDate.now();
+	}
+
 	@Override
 	public String toString() {
-		return "ListDetails [id=" + id + ", listName=" + listName + ", shopper=" + bookListOwner
-				+ ", listOfItems=" + listOfItems + "]";
+		return "BookListDetails [id=" + id + ", listName=" + listName + ", bookListOwner=" + bookListOwner
+				+ ", listOfItems=" + listOfItems + ", createdDate=" + createdDate + "]";
 	}
 
 }
