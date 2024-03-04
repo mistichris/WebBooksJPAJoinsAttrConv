@@ -23,25 +23,35 @@ public class BookListDetails {
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	private BookListOwner bookListOwner;
 	@OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-	private List<BookListItems> listOfItems;
+	private List<BookRatings> listOfRatings;
 	private LocalDate createdDate;
 
 	public BookListDetails() {
 		super();
 	}
 
+	public BookListDetails(String listName, BookListOwner bookListOwner, List<BookListItems> listOfItems,
+			List<BookRatings> listOfRatings) {
+		super();
+		this.listName = listName;
+		this.bookListOwner = bookListOwner;
+//		this.listOfItems = listOfItems;
+		this.listOfRatings = listOfRatings;
+		createdDate =  LocalDate.now();
+	}
+
 	public BookListDetails(String listName, BookListOwner bookListOwner, List<BookListItems> listOfItems) {
 		super();
 		this.listName = listName;
 		this.bookListOwner = bookListOwner;
-		this.listOfItems = listOfItems;
-		setCreatedDate(LocalDate.now());
+//		this.listOfItems = listOfItems;
+		createdDate =  LocalDate.now();
 	}
 
 	public BookListDetails(String listName, BookListOwner bookListOwner) {
 		this.listName = listName;
 		this.bookListOwner = bookListOwner;
-		setCreatedDate(LocalDate.now());
+		createdDate =  LocalDate.now();
 	}
 
 	public int getId() {
@@ -60,21 +70,21 @@ public class BookListDetails {
 		this.listName = listName;
 	}
 
-	public BookListOwner getShopper() {
+	public BookListOwner getBookListOwner() {
 		return bookListOwner;
 	}
 
-	public void setShopper(BookListOwner bookListOwner) {
+	public void getBookListOwner(BookListOwner bookListOwner) {
 		this.bookListOwner = bookListOwner;
 	}
 
-	public void setListOfItems(List<BookListItems> listOfItems) {
-		this.listOfItems = listOfItems;
-	}
-
-	public List<BookListItems> getListOfItems() {
-		return listOfItems;
-	}
+//	public void setListOfItems(List<BookListItems> listOfItems) {
+//		this.listOfItems = listOfItems;
+//	}
+//
+//	public List<BookListItems> getListOfItems() {
+//		return listOfItems;
+//	}
 
 	public LocalDate getCreatedDate() {
 		return createdDate;
@@ -83,11 +93,23 @@ public class BookListDetails {
 	public void setCreatedDate(LocalDate createdDate) {
 		createdDate =  LocalDate.now();
 	}
+	
+	public List<BookRatings> getListOfRatings() {
+		return listOfRatings;
+	}
+
+	public void setListOfRatings(List<BookRatings> listOfRatings) {
+		this.listOfRatings = listOfRatings;
+	}
+
+	public void setBookListOwner(BookListOwner bookListOwner) {
+		this.bookListOwner = bookListOwner;
+	}
 
 	@Override
 	public String toString() {
 		return "BookListDetails [id=" + id + ", listName=" + listName + ", bookListOwner=" + bookListOwner
-				+ ", listOfItems=" + listOfItems + ", createdDate=" + createdDate + "]";
+				+ " createdDate=" + createdDate + "]";
 	}
 
 }

@@ -8,7 +8,7 @@
 <title>View All Lists Page</title>
 </head>
 <body>
-	//list all lists with radio buttons for submission
+	<!-- list all lists with radio buttons for submission -->
 	<h1>Books Read Database List</h1>
 	<form method="post" action="NavigationAllListsServlet">
 		<table>
@@ -18,14 +18,17 @@
 					<td><h2>${currentList.listName}</h2></td>
 				</tr>
 				<tr>
-					<td colspan="4">Created By: ${currentList.bookListOwner} On
+					<td colspan="4">Created By: ${currentList.bookListOwner} On:
 						${currentList.createdDate}</td>
 				</tr>
-				<c:forEach items="${currentList.listOfItems}" var="listVal">
+				<c:forEach items="${currentList.listOfRatings}" var="listVal">
 					<tr>
 						<td></td>
-						<td colspan="3">${listVal.book},${listVal.author},
+						<td colspan="3">${listVal.book}, ${listVal.author}, 
 							${listVal.genre}</td>
+						<c:forEach items="${currentList.listOfRatings}" var="RatingVal">
+						<td colspan="4">Rating: ${RatingVal.rating} Read On: ${RatingVal.readDate}</td>
+						</c:forEach>
 					</tr>
 				</c:forEach>
 			</c:forEach>

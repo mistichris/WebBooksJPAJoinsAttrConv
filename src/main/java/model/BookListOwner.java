@@ -61,7 +61,7 @@ public class BookListOwner {
 
 	@Override
 	public String toString() {
-		return "BookListOwner [id=" + id + ", ownerFName=" + ownerFName + ", ownerLName=" + ownerLName + "]";
+		return ownerFName + " " + ownerLName;
 	}
 
 }

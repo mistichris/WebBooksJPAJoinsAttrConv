@@ -5,11 +5,9 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -24,32 +22,40 @@ public class BookRatings {
 	@GeneratedValue
 	private int id;
 	private LocalDate readDate;
-
 	private int rating;
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	private BookListItems book;
 
 	public BookRatings() {
 		super();
 	}
 
+	public BookRatings(int rating, LocalDate readDate, BookListItems book) {
+		this.rating = rating;
+		this.readDate = readDate;
+		this.book = book;
+	}
+	
+	public BookRatings(int rating, BookListItems book) {
+		this.rating = rating;
+		this.book = book;
+	}
+	
+	public BookRatings(LocalDate readDate, BookListItems book) {
+		this.readDate = readDate;
+		this.book = book;
+	}
+	
+	public BookRatings(BookListItems book) {
+		this.book = book;
+	}
+	
 	public int getId() {
 		return id;
 	}
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public BookRatings(int id, int rating, LocalDate readDate) {
-		super();
-		this.id = id;
-		this.rating = rating;
-		this.readDate = readDate;
-	}
-	
-	public BookRatings(int rating, LocalDate readDate) {
-		super();
-		this.rating = rating;
-		this.readDate = readDate;
 	}
 
 	public int getRating() {
@@ -66,6 +72,14 @@ public class BookRatings {
 
 	public void setReadDate(LocalDate readDate) {
 		this.readDate = readDate;
+	}
+	
+	public BookListItems getBook() {
+		return book;
+	}
+
+	public void setBook(BookListItems book) {
+		this.book = book;
 	}
 
 	@Override

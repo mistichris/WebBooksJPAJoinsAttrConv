@@ -45,7 +45,7 @@ public class NavigationAllListsServlet extends HttpServlet {
 			} catch (NumberFormatException e) {
 				System.out.println("Forgot to click a button");
 			} finally {
-				getServletContext().getRequestDispatcher("/viewAllListsServlet").forward(request, response);
+				getServletContext().getRequestDispatcher("/ViewAllListsServlet").forward(request, response);
 			}
 		} else if (act.equals("Edit List")) {
 			try {

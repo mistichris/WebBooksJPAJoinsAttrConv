@@ -8,7 +8,7 @@
 <title>Create a New Books Read List</title>
 </head>
 <body>
-	<form action="CreateListServlet" method="post">
+	<form action="createListServlet" method="post">
 		<div>
 			<label for="listName">List Name</label> <input type="text"
 				name="listName">
@@ -22,21 +22,47 @@
 				name="lastName">
 		</div>
 
-		<h2>Available Items:</h2>
-		<select name="allItemsToAdd" multiple size="6">
-			<c:forEach items="${requestScope.allItems}" var="currentitem">
-				<option value="${currentitem.id}">${currentitem.book}|
-					${currentitem.author}|${currentitem.genre}</option>
+<%-- 		<h2>Select Books and add Ratings:</h2>
+		<!-- for loop inside a for loop; add one at a time-->
+		<div>
+		<c:forEach items="${requestScope.allItems}" var="currentItem">
+				<input type="checkbox" id="allItemsToAdd" name="allItemsToAdd"
+					value="${currentItem.id}">
+				<table>
+					<tr>
+						<td></td>
+						<td colspan="2">Title: ${currentItem.book}</td>
+						<td colspan="2">Author: ${currentItem.author}</td>
+						<td colspan="2">Genre: ${currentItem.genre}</td>
+					</tr>
+				</table>
 			</c:forEach>
-		</select> <input type="submit" value="Create List and Add Items">
+		</div> --%>
+		
+		
+		<input type="submit" name="createList"  value="Continue to Add Books">
 	</form>
-	<button onclick="window.location.href='add-book.jsp'">Add
-		Books Instead</button>
+	
+	<form action="ViewAllBooksServlet" method="get">
+		<button type="submit">View Books List</button>
+	</form>
+		<form action="ViewAllListsServlet" method="get">
+		<button type="submit">View Books Read Lists</button>
+	</form>
+	
 	<!-- 	<a href="add-book.jsp">Go add new items instead.</a> -->
 
 </body>
 </html>
 
+
+<%-- 				
+					<form>
+						<td></td>
+						<input type="hidden" id="" value="${}>
+						<td colspan="3">Rating: <input type="text" id="ratingToAdd" name="rating" placeholder="1-5"></td>
+						<td colspan="3">Read On: <input type="date" id="ratingToAdd" name="date"></td>
+					</form> --%>
 <!-- 	<div>
 						Trip date: <input type="text" name="month" placeholder="mm"
 							size="4"> <input type="text" name="day" placeholder="dd"

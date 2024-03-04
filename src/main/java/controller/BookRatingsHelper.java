@@ -7,6 +7,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
+import model.BookListDetails;
 import model.BookRatings;
 
 /**
@@ -18,6 +19,14 @@ public class BookRatingsHelper {
 	static EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("WebBooksJPAJoinsAttributeConv");
 	
 	public void insertBookRatings(BookRatings li) {							
+		EntityManager em = emfactory.createEntityManager();			//creates a new instance of the Entity Manager
+		em.getTransaction().begin();
+		em.persist(li);
+		em.getTransaction().commit();
+		em.close();													//closes Entity Manager
+	}
+	
+	public void insertBookListDetails(BookListDetails li) {						
 		EntityManager em = emfactory.createEntityManager();			//creates a new instance of the Entity Manager
 		em.getTransaction().begin();
 		em.persist(li);

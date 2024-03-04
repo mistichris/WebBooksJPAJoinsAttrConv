@@ -28,9 +28,9 @@ public class ViewAllListsServlet extends HttpServlet {
 		List<BookListDetails> abc = bldh.getLists();
 		request.setAttribute("allLists", abc);
 		
-		//*****if empty code DOESN'T WORK for an empty database since its looking for a string and the items in the database are not strings
+		//*****if empty code didn't work for an empty database since its looking for a string and the items in the database are not strings
 //		if (abc.isEmpty()) {
-//			request.setAttribute("allLists", );
+//			request.setAttribute("allLists", " ");
 //		}
 		getServletContext().getRequestDispatcher("/view-all-lists.jsp").forward(request, response);
 	}

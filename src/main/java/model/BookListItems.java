@@ -1,9 +1,11 @@
 package model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -22,6 +24,8 @@ public class BookListItems {
 	private String book; // field variable
 	@Column(name = "GENRE")
 	private String genre;
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	private BookRatings ratingAndDate;
 
 	public BookListItems() { // empty constructor
 		super();

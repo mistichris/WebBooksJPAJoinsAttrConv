@@ -14,6 +14,7 @@ import controller.BookListItemsHelper;
 import controller.BookListOwnerHelper;
 import controller.BookRatingsHelper;
 import model.BookListDetails;
+import model.BookListItems;
 
 /**
  * Servlet implementation class EnterRatingsServlet
@@ -43,7 +44,7 @@ public class EnterRatingsServlet extends HttpServlet {
 //		request.setAttribute("listToEdit", listToEdit);
 		// Get list of books for list
 		BookListItemsHelper blih = new BookListItemsHelper();
-		List<BookListDetails> abc = blih.showAllBooks();
+		List<BookListItems> abc = blih.showAllBooks();
 		request.setAttribute("allLists", abc);
 		
 		
